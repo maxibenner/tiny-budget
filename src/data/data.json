@@ -1,0 +1,42 @@
+{
+  "general": {
+    "account": "Maximilian Benner",
+    "currency": "usd"
+  },
+  "categories": [
+    { "title": "Food", "id": 1 },
+    { "title": "Utilities", "id": 2 }
+  ],
+  "entries": [
+    {
+      "title": "Rewe",
+      "category": 1,
+      "date": 1723824320370,
+      "amount": 17
+    },
+    {
+      "title": "Rewe",
+      "category": 2,
+      "date": 1723824320370,
+      "amount": 17
+    },
+    {
+      "title": "Rewe",
+      "category": 1,
+      "date": 1723824320370,
+      "amount": 17
+    },
+    {
+      "title": "Rewe",
+      "category": 1,
+      "date": 1723824320370,
+      "amount": 17
+    },
+    {
+      "title": "Rewe",
+      "category": 1,
+      "date": 1723824320370,
+      "amount": 17
+    }
+  ]
+}
