@@ -5,16 +5,16 @@ export type AppData = {
 };
 
 export type Entry = {
-  id: string;
   title: string;
   category: string;
-  date: EpochTimeStamp;
+  date: string;
   amount: number;
 };
 
 export type Category = {
   id: string;
   title: string;
+  amount: number;
 };
 
 export type General = {

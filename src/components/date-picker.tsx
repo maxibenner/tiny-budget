@@ -13,11 +13,20 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 
-export function DatePicker() {
+export function DatePicker({
+  onValueChange,
+}: {
+  onValueChange: (date: Date) => void;
+}) {
   const [date, setDate] = React.useState<Date>();
 
+  function handleDateChange(date: Date | undefined) {
+    setDate(date);
+    date && onValueChange(date);
+  }
+
   return (
-    <Popover>
+    <Popover modal={true}>
       <PopoverTrigger asChild>
         <Button
           variant={"outline"}
@@ -34,7 +43,7 @@ export function DatePicker() {
         <Calendar
           mode="single"
           selected={date}
-          onSelect={setDate}
+          onSelect={handleDateChange}
           initialFocus
         />
       </PopoverContent>

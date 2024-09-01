@@ -1,0 +1,34 @@
+{
+  "categories": [
+    {
+      "title": "Home",
+      "id": "f83584d613cd4435b204562a2307986f",
+      "amount": 400
+    },
+    {
+      "title": "Food",
+      "id": "e7a8f8dfec384d84b6c55f3086c666af",
+      "amount": 500
+    },
+    {
+      "title": "Entertainment",
+      "id": "0e047f04518449daa2a7f9753f15848a",
+      "amount": 300
+    }
+  ],
+  "entries": [
+    {
+      "title": "test",
+      "category": "f83584d613cd4435b204562a2307986f",
+      "date": null,
+      "amount": 1
+    },
+    {
+      "title": "test2",
+      "category": "0e047f04518449daa2a7f9753f15848a",
+      "date": null,
+      "amount": 2
+    }
+  ],
+  "general": { "account": "sample", "currency": "usd" }
+}

@@ -1,7 +1,9 @@
+import Navigation from "@/components/navigation";
+import { DataProvider } from "@/context/data";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { DataProvider } from "@/context/data";
+import { cn } from "@/lib/utils";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,7 +20,16 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <DataProvider>{children}</DataProvider>
+        <DataProvider>
+          <div vaul-drawer-wrapper="">
+            <div className="relative flex min-h-screen flex-col bg-background">
+              <div className="flex flex-col p-4 gap-4">
+                <Navigation />
+                {children}
+              </div>
+            </div>
+          </div>
+        </DataProvider>
       </body>
     </html>
   );
