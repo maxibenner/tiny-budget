@@ -22,11 +22,10 @@ export default function Home() {
     () =>
       data &&
       data.entries.map((element: Entry, i: number) => {
-        // Date
         const d = new Date(element.date);
         const formattedDate = `${d.getDay()}.${d.getMonth()}.${d.getFullYear()}`;
 
-        // Category
+        // Get category name
         const category = data.categories.find(
           (category: Category) => category.id === element.category
         )?.title;
