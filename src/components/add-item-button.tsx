@@ -1,6 +1,11 @@
+import { Dialog, DialogContent } from "@/components/ui/dialog";
+import { useData } from "@/context/data";
+import { Category } from "@/types/data";
 import { Label } from "@radix-ui/react-label";
+import { FormEvent, useState } from "react";
+import { DatePicker } from "./date-picker";
 import { Button } from "./ui/button";
-import { Drawer, DrawerContent, DrawerTitle, DrawerTrigger } from "./ui/drawer";
+import { DrawerTitle } from "./ui/drawer";
 import { Input } from "./ui/input";
 import {
   Select,
@@ -9,14 +14,11 @@ import {
   SelectItem,
   SelectTrigger,
 } from "./ui/select";
-import { DatePicker } from "./date-picker";
-import { Category } from "@/types/data";
-import { FormEvent, useState } from "react";
-import { useData } from "@/context/data";
+import { DialogTrigger } from "@radix-ui/react-dialog";
 
 export default function AddItemButton() {
   const { data, addEntry } = useData();
-  const [drawerActive, setDrawerActive] = useState(false);
+  const [dialogActive, setDialogActive] = useState(false);
   const [selectedDate, setSelectedDate] = useState<Date | undefined>();
 
   function handleNewEntry(e: FormEvent<HTMLFormElement>) {
@@ -34,17 +36,17 @@ export default function AddItemButton() {
       date,
       amount: parseInt(amount),
     });
-    setDrawerActive(false);
+    setDialogActive(false);
   }
   return (
-    <Drawer open={drawerActive} onOpenChange={setDrawerActive}>
-      <DrawerTrigger asChild>
-        <Button className="fixed shadow-md right-8 bottom-8 h-12">
+    <Dialog open={dialogActive} onOpenChange={setDialogActive}>
+      <DialogTrigger asChild>
+        <Button className="fixed shadow-md right-4 bottom-4 h-12">
           Add Item
         </Button>
-      </DrawerTrigger>
-      <DrawerContent>
-        <form onSubmit={handleNewEntry} className="p-8 flex flex-col gap-4">
+      </DialogTrigger>
+      <DialogContent className="sm:max-w-[425px] h-[100svh]">
+        <form onSubmit={handleNewEntry} className="flex flex-col gap-4">
           <DrawerTitle className="mb-4 text-xl">Add New Entry</DrawerTitle>
           <div>
             <Label htmlFor="name">Name</Label>
@@ -93,7 +95,7 @@ export default function AddItemButton() {
             Add Entry
           </Button>
         </form>
-      </DrawerContent>
-    </Drawer>
+      </DialogContent>
+    </Dialog>
   );
 }

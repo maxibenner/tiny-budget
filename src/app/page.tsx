@@ -23,7 +23,10 @@ export default function Home() {
       data &&
       data.entries.map((element: Entry, i: number) => {
         const d = new Date(element.date);
-        const formattedDate = `${d.getDay()}.${d.getMonth()}.${d.getFullYear()}`;
+        const formattedDate = `${d.getDate()}.${d.getMonth()}.${d
+          .getFullYear()
+          .toString()
+          .slice(-2)}`;
 
         // Get category name
         const category = data.categories.find(
@@ -31,7 +34,7 @@ export default function Home() {
         )?.title;
 
         return (
-          <TableRow key={i}>
+          <TableRow key={i} className={`${i % 2 === 0 ? "bg-gray-100" : ""}`}>
             <TableCell>{formattedDate}</TableCell>
             <TableCell>{element.title}</TableCell>
             <TableCell>{category}</TableCell>
@@ -44,7 +47,7 @@ export default function Home() {
 
   return (
     <main>
-      <MonthPicker onValueChange={setSelectedMonth} />
+      <MonthPicker className="mx-4 mt-4" onValueChange={setSelectedMonth} />
       <Table className="mt-4">
         <TableBody>
           <TableRow>

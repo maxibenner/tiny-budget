@@ -10,8 +10,6 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "Budget",
   description: "Offline, portable, free budget app",
-  viewport:
-    "width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no",
 };
 
 export default function RootLayout({
@@ -22,16 +20,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <DataProvider>
-          <div vaul-drawer-wrapper="">
-            <div className="relative flex min-h-screen flex-col bg-background">
-              <div className="flex flex-col p-4 gap-4">
-                <Navigation />
-                {children}
-              </div>
-            </div>
-          </div>
-        </DataProvider>
+        <div className="h-[100svh] overflow-y-scroll">
+          <DataProvider>
+            <Navigation />
+            {children}
+          </DataProvider>
+        </div>
       </body>
     </html>
   );

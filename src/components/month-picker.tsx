@@ -15,8 +15,10 @@ import MonthCalendar from "./month-calendar";
 
 export function MonthPicker({
   onValueChange,
+  className,
 }: {
   onValueChange: (date: Date) => void;
+  className?: string;
 }) {
   const [popupOpen, setPopupOpen] = React.useState(false);
   const [currentDate, setCurrentDate] = React.useState<Date>(new Date());
@@ -29,29 +31,31 @@ export function MonthPicker({
   }
 
   return (
-    <Popover open={popupOpen} onOpenChange={setPopupOpen} modal={true}>
-      <PopoverTrigger asChild>
-        <Button
-          variant={"outline"}
-          className={cn(
-            "w-[280px] justify-start text-left font-normal",
-            !currentDate && "text-muted-foreground"
-          )}
-        >
-          <CalendarIcon className="mr-2 h-4 w-4" />
-          {currentDate ? (
-            format(currentDate, "MMMM yyy")
-          ) : (
-            <span>Pick a date</span>
-          )}
-        </Button>
-      </PopoverTrigger>
-      <PopoverContent className="w-auto p-0">
-        <MonthCalendar
-          currentMonth={currentDate}
-          onMonthChange={handleDateChange}
-        />
-      </PopoverContent>
-    </Popover>
+    <div className={className}>
+      <Popover open={popupOpen} onOpenChange={setPopupOpen} modal={true}>
+        <PopoverTrigger asChild>
+          <Button
+            variant={"outline"}
+            className={cn(
+              "w-full sm:w-[280px] justify-start text-left font-normal",
+              !currentDate && "text-muted-foreground"
+            )}
+          >
+            <CalendarIcon className="mr-2 h-4 w-4" />
+            {currentDate ? (
+              format(currentDate, "MMMM yyy")
+            ) : (
+              <span>Pick a date</span>
+            )}
+          </Button>
+        </PopoverTrigger>
+        <PopoverContent className="w-auto p-0">
+          <MonthCalendar
+            currentMonth={currentDate}
+            onMonthChange={handleDateChange}
+          />
+        </PopoverContent>
+      </Popover>
+    </div>
   );
 }

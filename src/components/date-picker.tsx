@@ -18,15 +18,21 @@ export function DatePicker({
 }: {
   onValueChange: (date: Date) => void;
 }) {
-  const [date, setDate] = React.useState<Date>();
+  const [date, setDate] = React.useState<Date | undefined>(new Date());
+  const [isActive, setIsActive] = React.useState<boolean>(false);
 
   function handleDateChange(date: Date | undefined) {
     setDate(date);
     date && onValueChange(date);
+    setIsActive(false);
   }
 
+  React.useEffect(() => {
+    date && onValueChange(date);
+  }, []);
+
   return (
-    <Popover modal={true}>
+    <Popover onOpenChange={setIsActive} open={isActive} modal={true}>
       <PopoverTrigger asChild>
         <Button
           variant={"outline"}
